@@ -1,6 +1,6 @@
 +++
 title = 'Introducing my Portfolio Site'
-description = 'Woohoo! A brand new portfolio website!'
+subtitle = 'Woohoo! A brand new portfolio website!'
 date = 2023-10-15T20:20:50+01:00
 draft = false
 +++
