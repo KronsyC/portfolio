@@ -1,0 +1,92 @@
+baseURL = 'https://kronsy.dev/'
+languageCode = 'en-IE'
+title = "Samir's Portfolio"
+
+hasCJKLanguage = false 
+paginate = 12
+googleAnalytics = ""
+copyright = ""
+
+enableRobotsTxt = true
+# enableGitInfo = true
+enableEmoji = true
+
+theme = "LoveIt"
+
+languageName = "English"
+
+[author]
+  name = "Samir Bioud"
+  email = "samir@kronsy.dev"
+  link = "https://github.com/KronsyC"
+
+[params]
+  defaultTheme = "auto"
+  gitRepo = ""
+  fingerprint = "sha256"
+  dateFormat = "2006-06-03"
+  title = "Samir's Portfolio"
+  description = "Samir's backend development portfolio site"
+ 
+[params.header]
+  desktopMode = "fixed"
+  mobileMode = "auto"
+
+  [params.header.title]
+    name = "Samir Bioud"
+    typeit = true
+[params.footer]
+  enable = true
+  custom = "Made with caffeine"
+  hugo = false
+  copyright = true
+  author = true
+  since = 2023
+
+[params.home]
+  rss = 10
+
+  [params.home.profile]
+    enable = true
+    title = "<h2>Samir Bioud</h2>"
+    subtitle = "Engineer | Student | Founder"
+    social = true 
+
+    gravatarEmail = "samir@kronsy.dev"
+
+  [params.home.posts]
+    enable = false
+    paginate = 3
+
+[params.social]
+  GitHub = "KronsyC"
+  Linkedin = "kronsy"
+  Email = "samir@kronsy.dev"
+  # Matrix = "@kronsyc_"
+
+[menu]
+
+  [[menu.main]]
+    weight = 1
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    title = "Home Page"
+  
+  [[menu.main]]
+    weight = 2
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    title = "About Me"
+
+  [[menu.main]]
+    weight = 3
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    title = "My Posts"
+
+[markup]
+  [markup.highlight]
+    noClasses = false
