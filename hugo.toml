@@ -23,7 +23,6 @@ languageName = "English"
 [params]
   defaultTheme = "auto"
   gitRepo = ""
-  fingerprint = "sha256"
   dateFormat = "2006-06-03"
   title = "Samir's Portfolio"
   description = "Samir's backend development portfolio site"
