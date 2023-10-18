@@ -81,6 +81,12 @@ languageName = "English"
 
   [[menu.main]]
     weight = 3
+    identifer = "projects"
+    name = "Projects"
+    url = "/projects/"
+    title = "My Projects"
+  [[menu.main]]
+    weight = 4
     identifier = "posts"
     name = "Posts"
     url = "/posts/"
