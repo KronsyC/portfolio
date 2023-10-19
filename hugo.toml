@@ -89,7 +89,7 @@ languageName = "English"
     weight = 4
     identifier = "posts"
     name = "Posts"
-    url = "/posts/"
+    url = "/blog/"
     title = "My Posts"
 
 [markup]
