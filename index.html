@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Samirs Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    html {
+      background-color: rgb(68, 68, 68);
+      height: 100%;
+    }
+
+    h1 {
+      color: white;
+    }
+
+    p {
+      color: rgb(247, 247, 247);
+    }
+
+    li {
+      color: rgb(236, 236, 236);
+    }
+
+    a {
+      color: rgb(61, 255, 223);
+    }
+
+
+    body{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 100%;
+    }
+
+    main{
+      flex: 1;
+      width: 60%;
+    }
+
+    #canvas{
+      width: 40%;
+      /* aspect-ratio: 1; */
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+    <h1>Samirs Website</h1>
+
+
+    <p><strong>Hey, my name is Samir and I like to build stuff.</strong></p>
+  
+    <ul>
+      <li>Favorite Language: Rust</li>
+      <li>Current Project: <a href="https://induct.ie">Induct</a></li>
+      <li>Age: <span id="age"></span></li>
+      <li>Studying: <a href="https://software-engineering.ie">Immersive Software Engineering</a></li>
+      <li>Area of Interest: Compilers and Embedded Systems</li>
+    </ul>
+    <br>
+  
+  
+    <p><strong>Links</strong></p>
+    <ul>
+      <li><a href="https://github.com/KronsyC">Github</a></li>
+      <li><a href="https://linkedin.com/in/kronsy">LinkedIn</a></li>
+    </ul>
+  
+    <br>
+    <p><strong>Projects</strong></p>
+  
+    <ul>
+      <li><a href="https://github.com/KronsyC/state-machine">FSM Library</a> (2023) - Where I basically re-invented Finite
+        State Machines by extending the idea of a prefix tree</li>
+      <li><a href="https://github.com/KronsyC/chess_engine">Chess Engine</a> (2023) - Which I built for my Leaving
+        Certificate CS course</li>
+      <li><a href="https://github.com/KronsyC/quinoa">The Quinoa Programming Language</a> (2022) - Which I built for shits
+        and giggles, and won <a href="https://immersive-se.ie/tecs-awards-2022/">this competition</a></li>
+      <li>
+        <a href="https://github.com/KronsyC/minty">Backend Web Framework</a> (2021) - Which I also built for shits and
+        giggles, with a few different dependencies
+        <ul>
+          <li><a href="https://github.com/KronsyC/beetroute">Routing Library</a> - My First Exposure to proper DS&amp;A
+          </li>
+          <li><a href="https://github.com/KronsyC/schematica">JSON Schema Validatior</a></li>
+        </ul>
+      </li>
+  
+    </ul>
+  </main>
+
+
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const dob = new Date('2006-03-06');
+    const age_span = document.getElementById('age');
+    const age = Math.floor((new Date() - dob) / 1000 / 60 / 60 / 24 / 365);
+    age_span.innerHTML = age;
+
+
+
+
+    const Rx = (theta) => [
+      [1, 0, 0],
+      [0, Math.cos(theta), -Math.sin(theta)],
+      [0, Math.sin(theta), Math.cos(theta)]
+    ];
+
+    const Ry = (theta) => [
+      [Math.cos(theta), 0, Math.sin(theta)],
+      [0, 1, 0],
+      [-Math.sin(theta), 0, Math.cos(theta)]
+    ];
+
+    const Rz = (theta) => [
+      [Math.cos(theta), -Math.sin(theta), 0],
+      [Math.sin(theta), Math.cos(theta), 0],
+      [0, 0, 1]
+    ];
+
+
+    const rotate = (matrix, theta, axis) => {
+      let R;
+      switch (axis) {
+        case 'x':
+          R = Rx(theta);
+          break;
+        case 'y':
+          R = Ry(theta);
+          break;
+        case 'z':
+          R = Rz(theta);
+          break;
+        default:
+          throw new Error('Invalid Axis');
+      }
+
+      return matrix.map((row, i) => row.map((_, j) => row.reduce((acc, _, k) => acc + row[k] * R[k][j], 0)));
+    }
+    const goldenRatio = (1 + Math.sqrt(5)) / 2;
+
+    // Vertices of an icosahedron
+    const vertices = [
+      [0, 1, goldenRatio],
+      [0, -1, goldenRatio],
+      [0, 1, -goldenRatio],
+      [0, -1, -goldenRatio],
+      [1, goldenRatio, 0],
+      [-1, goldenRatio, 0],
+      [1, -goldenRatio, 0],
+      [-1, -goldenRatio, 0],
+      [goldenRatio, 0, 1],
+      [-goldenRatio, 0, 1],
+      [goldenRatio, 0, -1],
+      [-goldenRatio, 0, -1]
+    ];
+
+    const edges = [
+      [0, 1] , [0, 4], [0, 5], [0, 8], [0, 9],
+      [1, 6], [1, 7], [1, 8], [1, 9],
+      [2, 3], [2, 4], [2, 5], [2, 10], [2, 11],
+      [3, 6], [3, 7], [3, 10], [3, 11],
+      [4, 5], [4, 8], [4, 10],
+      [5, 9], [5, 11],
+      [6, 7], [6, 8], [6, 10], 
+      [7, 9], [7, 11],
+      [8, 10],
+      [9, 11],
+];
+
+    const scaler = 200;
+    // Convert edge indices to vertex coordinates
+    const edgeCoordinates = edges.map(edge => [vertices[edge[0]], vertices[edge[1]]]);
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+
+    const draw = (edges) => {
+      ctx.clearRect(0, 0, width, height);
+      ctx.lineWidth = 12;
+      ctx.strokeStyle = 'rgb(45, 204, 178)';
+      ctx.beginPath();
+      ctx.moveTo(edges[0][0] * scaler + width / 2, edges[0][1] * scaler + height / 2);
+
+      edges.forEach(([point1, point2], _) => {
+          ctx.moveTo(point1[0] * scaler + width / 2, point1[1] * scaler + height / 2);
+          ctx.lineTo(point2[0] * scaler + width / 2, point2[1] * scaler + height / 2);
+      }
+      )
+      // shape.forEach((point1, i1) => {
+      //   shape.forEach((point2, i2) => {
+      //     if(i1 === i2) return;
+      //     ctx.moveTo(point1[0] * 100 + width / 2, point1[1] * 100 + height / 2);
+      //     ctx.lineTo(point2[0] * 100 + width / 2, point2[1] * 100 + height / 2);
+      //   });
+      //   // ctx.lineTo(point[0] * 100 + width / 2, point[1] * 100 + height / 2);
+      // });
+      ctx.closePath();
+      ctx.stroke();
+    }
+
+    let thetax = 0;
+    let thetay = 0;
+    let thetaz = 0;
+    const animate = () => {
+      thetax += 0.01;
+      thetay += 0.023;
+      thetaz += 0.00;
+      const rotated = edgeCoordinates.map(([p1, p2], _) => [rotate([p1], thetax, 'x')[0], rotate([p2], thetax, 'x')[0]])
+        .map(([p1, p2], _) => [rotate([p1], thetay, 'y')[0], rotate([p2], thetay, 'y')[0]])
+        .map(([p1, p2], _) => [rotate([p1], thetaz, 'z')[0], rotate([p2], thetaz, 'z')[0]]);
+
+      // console.log(rotated)
+      draw(rotated);
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+
+  </script>
+</body>
+
+</html>
