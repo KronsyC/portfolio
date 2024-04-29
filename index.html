@@ -176,7 +176,6 @@
 ];
 
     const scaler = 200;
-    // Convert edge indices to vertex coordinates
     const edgeCoordinates = edges.map(edge => [vertices[edge[0]], vertices[edge[1]]]);
 
     const canvas = document.getElementById('canvas');
@@ -196,14 +195,6 @@
           ctx.lineTo(point2[0] * scaler + width / 2, point2[1] * scaler + height / 2);
       }
       )
-      // shape.forEach((point1, i1) => {
-      //   shape.forEach((point2, i2) => {
-      //     if(i1 === i2) return;
-      //     ctx.moveTo(point1[0] * 100 + width / 2, point1[1] * 100 + height / 2);
-      //     ctx.lineTo(point2[0] * 100 + width / 2, point2[1] * 100 + height / 2);
-      //   });
-      //   // ctx.lineTo(point[0] * 100 + width / 2, point[1] * 100 + height / 2);
-      // });
       ctx.closePath();
       ctx.stroke();
     }
@@ -219,7 +210,6 @@
         .map(([p1, p2], _) => [rotate([p1], thetay, 'y')[0], rotate([p2], thetay, 'y')[0]])
         .map(([p1, p2], _) => [rotate([p1], thetaz, 'z')[0], rotate([p2], thetaz, 'z')[0]]);
 
-      // console.log(rotated)
       draw(rotated);
       requestAnimationFrame(animate);
     }
