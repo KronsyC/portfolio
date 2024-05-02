@@ -40,14 +40,27 @@
       height: 100%;
     }
 
-    main{
-      flex: 1;
-      width: 60%;
-    }
 
+
+    @media screen and (max-width: 1000px){
+      body{
+        flex-direction: column;
+      }
+      main{
+        width: 100%;
+      }
+      #canvas{
+       background-color: red;
+
+      }
+    }
+    main{
+      min-width: 60%;
+    }
     #canvas{
-      width: 40%;
-      /* aspect-ratio: 1; */
+      width: 100%;
+      background-color: red;
+      max-width: 600px;
     }
   </style>
 </head>
