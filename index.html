@@ -12,54 +12,10 @@
   <meta property="og:description"
     content="Samir Bioud is a Software Engineer based in Ireland, passionate about Compilers and Embedded Systems">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="moz.css">
   <style>
-    html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-    * {
-      box-sizing: border-box;
-      margin: 0;
-    }
+
 
     html {
       /* background-color: rgb(68, 68, 68); */
@@ -126,49 +82,66 @@ table {
       width: fit-content;
     }
 
+    .section .subtitle{
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .section li{
+      line-height: 25px;
+    }
+
     #canvas {
       max-width: 40%;
     }
 
     .list {
-      margin-top: 20px;
       list-style-type: square;
       display: flex;
       flex-direction: column;
-      gap: clamp(4px, 0.1vw, 8px);
+      gap: clamp(7px, 0.4vw, 12px);
+    }
+
+    .nested-list {
+      margin-top: 10px;
     }
 
     .intro {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 20px;
     }
-
-    .points {}
-
-    .what-ive-done {}
 
     .intro .social-links {
       list-style: none;
       display: flex;
       gap: 20px;
     }
-
     .intro .social-links a {
       color: rgb(231, 231, 231);
       font-size: 2rem;
+    }
+
+    .intro .social-links a:hover {
+      color: rgb(201, 201, 201);
+      transition: color 0.1s ease-in;
     }
 
     .intro .name {
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
       font-size: 3rem;
       font-weight: 700;
+      margin: 0;
     }
 
-    .intro .tagline {}
+    .intro .tagline {
+      margin: 0;
+    }
 
-    .subtitle {
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    p{
+      /* line-height: 160%; */
     }
   </style>
 </head>
@@ -225,7 +198,7 @@ table {
           to make it more robust and faster, with a better agent as well</li>
         <li><a href="https://github.com/KronsyC/state-machine">FSM Library</a> (2023) - Where I basically re-invented
           Finite
-          State Machines by extending the idea of a prefix tree</li>
+          State Machines without knowing about them, by extending the idea of a prefix tree</li>
         <li><a href="https://github.com/KronsyC/chess_engine">Chess Engine</a> (2023) - Which I built for my Leaving
           Certificate CS course</li>
         <li><a href="https://github.com/KronsyC/quinoa">The Quinoa Programming Language</a> (2022) - Which I built for
@@ -234,7 +207,7 @@ table {
         <li>
           <a href="https://github.com/KronsyC/minty">Backend Web Framework</a> (2021) - Which I also built for shits and
           giggles, with a few different dependencies
-          <ul>
+          <ul class="list nested-list">
             <li><a href="https://github.com/KronsyC/beetroute">Routing Library</a> - My First Exposure to proper
               DS&amp;A
             </li>
