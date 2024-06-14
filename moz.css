@@ -110,30 +110,11 @@
      unicode-bidi: plaintext;
  }
  
- /* blocks */
- 
- article,
- aside,
- details,
- div,
- dt,
- figcaption,
- footer,
- form,
- header,
- hgroup,
- html,
- main,
- nav,
- search,
- section,
- summary {
-   display: block;
- }
+
  
  body {
    display: block;
-   margin: 8px;
+   margin: 0;
  }
  
  p, dl {

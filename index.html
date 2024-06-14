@@ -16,6 +16,12 @@
   <link rel="stylesheet" href="moz.css">
   <style>
 
+    *{
+      margin: 0;
+
+    }
+
+
 
     html {
       /* background-color: rgb(68, 68, 68); */
@@ -73,26 +79,31 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: clamp(10px, 1.6vw, 60px);
+      gap: clamp(10px, 1.2vw, 60px);
       padding: clamp(20px, 2vw, 60px);
+      box-sizing: border-box;
     }
 
 
     .section {
+      box-sizing: border-box;
       width: fit-content;
     }
 
     .section .subtitle{
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       font-weight: 600;
+      box-sizing: border-box;
       margin-bottom: 20px;
     }
 
     .section li{
+      box-sizing: border-box;
       line-height: 25px;
     }
 
     #canvas {
+      box-sizing: border-box;
       max-width: 40%;
     }
 
@@ -104,10 +115,13 @@
     }
 
     .nested-list {
+      box-sizing: border-box;
       margin-top: 10px;
+      list-style-type:circle;
     }
 
     .intro {
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       gap: 20px;
